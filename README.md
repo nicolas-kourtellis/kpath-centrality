@@ -70,9 +70,15 @@ modules at once:
 g++ betweenness.o fibheap.o kpath.o readgml.o main_kpath.o -o kpath_centrality
 
 User input:
-The user input for the kpath-centrality is the following:
+
+The user input for these algorithms is shown when the executable is called
+without the appropriate arguments:
+
 $ ./kpath_centrality
 Usage: ./Centrality <infile.gml> <outfile.csv> <k-path alpha> <k-path length>
+
+Example of a correct execution:
+
 $ ./kpath_centrality ../test-datasets/1K.gml ../test-datasets/1K.csv 0.2 20
 
 In case that wrong values are given for the two parameters (alpha and length),
@@ -99,10 +105,16 @@ For your convenience there is also a Makefile in this directory that will
 help you compile the necessary code and produce a single executable.
 
 User input:
-The user input for these algorithms is the following:
+
+The user input for these algorithms is shown when the executable is called without
+the appropriate arguments:
+
 $ ./rand-brandes_adap-sampl_centrality
 Usage: ./rand-brandes_adap-sampl_centrality <infile.gml> <outfile.csv>
 <epsilon for rand-bet> <c-threshold for adap-sampl> <pivots for adap-sampl>
+
+Example of a correct execution:
+
 $ ./rand-brandes_adap-sampl_centrality ../test-datasets/1K.gml ../test-datasets/1K.csv 0.05 5 20
 
 If the input graph is unweighted, the value "1" should be used to signify this.
@@ -126,4 +138,5 @@ text-based format of 3 columns as an edge-list (first two columns) with integer 
 .gml format files.
 
 Example execution (after successful compilation):
+
 ./fileToGML 1K.txt 1K.gml
