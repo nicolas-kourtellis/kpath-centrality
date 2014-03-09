@@ -813,8 +813,4 @@ void Adaptive_Sampling_Algorithm(f64 ACB[], NETWORK *network, f64 c_thr, f64 sup
 	else 
 		Adaptive_Sampling_Unweighted(ACB, network, c_thr, sup, time_dif); 
 	return;
-} 
-
-
-	
-
+}

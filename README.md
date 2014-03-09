@@ -63,7 +63,11 @@ This zip contains three directories:
 In the kpath-code directory there are c++ files and libraries to compile and 
 be able to execute the kpath-centrality randomized approximation algorithm.
 For your convenience there is also a Makefile in this directory that will
-help you compile the necessary code and produce a single executable.
+help you compile the necessary code and produce a single executable. If this
+makefile does not work on your platform, you can also compile the various
+modules at once:
+
+g++ betweenness.o fibheap.o kpath.o readgml.o main_kpath.o -o kpath_centrality
 
 User input:
 The user input for the kpath-centrality is the following:
@@ -73,6 +77,10 @@ $ ./kpath_centrality ../test-datasets/1K.gml ../test-datasets/1K.csv 0.2 20
 
 In case that wrong values are given for the two parameters (alpha and length),
 the software picks typical values.
+
+If the input graph is unweighted, the value "1" should be used to signify this.
+A weighted graph with integer valued weights is recognized by the software and
+the appropriate routines are called.
 
 The output will be stored in the file given as the second argument and will 
 be in the csv format. For easiness, the brandes algorithm is also executed
@@ -97,6 +105,10 @@ Usage: ./rand-brandes_adap-sampl_centrality <infile.gml> <outfile.csv>
 <epsilon for rand-bet> <c-threshold for adap-sampl> <pivots for adap-sampl>
 $ ./rand-brandes_adap-sampl_centrality ../test-datasets/1K.gml ../test-datasets/1K.csv 0.05 5 20
 
+If the input graph is unweighted, the value "1" should be used to signify this.
+A weighted graph with integer valued weights is recognized by the software and
+the appropriate routines are called.
+
 The output will be stored in the file given as the second argument and will 
 be in the csv format. For easiness, the brandes algorithm is also executed
 first, to produce the real betweenness centrality values for vertices.
@@ -107,11 +119,11 @@ a list of results is printed at tuples: <vertex,betweenness,rand-brandes-score,a
 3. test-datesets
 ----------------
 
-In the test-datasets directory there are some small datasets in .gml format
-that allow you to test the algorithm and get some results. In case you have
-other datasets in a text-based format of 3 columns as an edge-list (first two
-columns) with weights (3rd column), you can use the code in "fileToGML.cpp"
-to transform these datasets into .gml format files.
+In the test-datasets directory there are some small datasets in .gml format that allow
+you to test the algorithm and get some results. In case you have other datasets in a
+text-based format of 3 columns as an edge-list (first two columns) with integer weights
+(3rd column), you can use the code in "fileToGML.cpp" to transform these datasets into
+.gml format files.
 
 Example execution (after successful compilation):
-./fileToGML 1K.out 1K.gml
+./fileToGML 1K.txt 1K.gml
